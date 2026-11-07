@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragscope"
+version = "0.1.0"
+description = "A production-shaped RAG pipeline with an evaluation harness: chunkers, BM25, dense and hybrid retrieval, cited answers, and metrics that tell you which one actually works."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "Lijo Ferdinand", email = "lijoferdinand@gmail.com" }]
+keywords = ["rag", "retrieval", "bm25", "evaluation", "llm", "information-retrieval", "hybrid-search"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+anthropic = ["anthropic>=0.40"]
+st = ["sentence-transformers>=2.6"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+ragscope = "ragscope.cli:main"
+
+[project.urls]
+Repository = "https://github.com/lijo123ferdinand/ragscope"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ragscope = ["data/*.json", "data/corpus/*.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
