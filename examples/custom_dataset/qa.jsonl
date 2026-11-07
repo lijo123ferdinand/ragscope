@@ -1,0 +1,4 @@
+{"id": "c1", "question": "What pressure is used to brew espresso?", "answer": "nine bars", "evidence": [{"doc_id": "espresso", "text": "at about nine bars of pressure"}]}
+{"id": "c2", "question": "What is the foam on an espresso shot called?", "answer": "crema", "evidence": [{"doc_id": "espresso", "text": "The layer of reddish-brown foam on top of a fresh shot is called crema"}]}
+{"id": "c3", "question": "What coffee to water ratio is typical for pour-over?", "answer": "sixteen grams of water", "evidence": [{"doc_id": "pour_over", "text": "A common starting ratio is one gram of coffee for every sixteen grams of water"}]}
+{"id": "c4", "question": "Why do you let the grounds bloom first?", "answer": "trapped gas escape", "evidence": [{"doc_id": "pour_over", "text": "It lets trapped gas escape so that the following pours extract evenly"}]}
