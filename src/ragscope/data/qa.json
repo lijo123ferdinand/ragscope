@@ -1,0 +1,982 @@
+[
+ {
+  "id": "q01",
+  "question": "What are the three states a Raft server can be in?",
+  "answer": "leader, follower, or candidate",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "each server is in one of three states: leader, follower, or candidate"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q02",
+  "question": "Why does Raft pick election timeouts at random?",
+  "answer": "split votes are rare",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "Election timeouts are chosen randomly from a fixed interval, such as 150 to 300 milliseconds, so that split votes are rare and resolved quickly"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q03",
+  "question": "When is a log entry considered committed in Raft?",
+  "answer": "majority of servers",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "An entry is considered committed once the leader has replicated it on a majority of servers"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q04",
+  "question": "How many node failures can a five node Raft cluster survive?",
+  "answer": "two",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "A cluster of five servers can tolerate the failure of two servers"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q05",
+  "question": "How does the leader keep followers from starting new elections?",
+  "answer": "heartbeats",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "The leader also sends empty AppendEntries messages as heartbeats to maintain its authority and prevent new elections"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q06",
+  "question": "What is the in-memory buffer of an LSM tree called?",
+  "answer": "memtable",
+  "evidence": [
+   {
+    "doc_id": "lsm_tree",
+    "text": "inserted into an in-memory sorted structure called the memtable"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q07",
+  "question": "How is a deletion represented in an LSM tree?",
+  "answer": "tombstone",
+  "evidence": [
+   {
+    "doc_id": "lsm_tree",
+    "text": "a delete writes a special marker known as a tombstone"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q08",
+  "question": "Which compaction strategy favors reads and space efficiency?",
+  "answer": "leveled compaction",
+  "evidence": [
+   {
+    "doc_id": "lsm_tree",
+    "text": "leveled compaction organizes files into levels with non-overlapping key ranges and favors read performance and space efficiency"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q09",
+  "question": "What does write amplification measure?",
+  "answer": "ratio of bytes written to storage versus bytes written by the application",
+  "evidence": [
+   {
+    "doc_id": "lsm_tree",
+    "text": "Write amplification is the ratio of bytes written to storage versus bytes written by the application"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q10",
+  "question": "Why are range scans fast in a B+ tree?",
+  "answer": "linked together in a sorted chain",
+  "evidence": [
+   {
+    "doc_id": "btree",
+    "text": "The leaves are linked together in a sorted chain, which makes range scans efficient"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q11",
+  "question": "What happens when inserting into a full B-tree node?",
+  "answer": "split",
+  "evidence": [
+   {
+    "doc_id": "btree",
+    "text": "When an insertion overflows a node, the node is split into two and the middle key is pushed up into the parent"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q12",
+  "question": "How do databases make in-place page updates crash safe?",
+  "answer": "write-ahead log",
+  "evidence": [
+   {
+    "doc_id": "btree",
+    "text": "Databases therefore protect B-tree modifications with a write-ahead log"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q13",
+  "question": "Can a Bloom filter return false negatives?",
+  "answer": "false negatives are not",
+  "evidence": [
+   {
+    "doc_id": "bloom_filter",
+    "text": "False positives are possible, but false negatives are not"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q14",
+  "question": "What false positive rate do you get with ten bits per element?",
+  "answer": "one percent",
+  "evidence": [
+   {
+    "doc_id": "bloom_filter",
+    "text": "With about ten bits per element and the optimal number of hash functions, the false positive rate is roughly one percent"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q15",
+  "question": "Which variant of the filter allows removing elements?",
+  "answer": "counting Bloom filter",
+  "evidence": [
+   {
+    "doc_id": "bloom_filter",
+    "text": "A counting Bloom filter replaces each bit with a small counter so that elements can be removed by decrementing counters"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q16",
+  "question": "Why is hash modulo N a bad way to assign keys to servers?",
+  "answer": "remaps almost every key",
+  "evidence": [
+   {
+    "doc_id": "consistent_hashing",
+    "text": "changing N remaps almost every key"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q17",
+  "question": "How are uneven loads on the hash ring fixed?",
+  "answer": "virtual nodes",
+  "evidence": [
+   {
+    "doc_id": "consistent_hashing",
+    "text": "The standard fix is virtual nodes, where every physical node is placed on the ring at many positions"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q18",
+  "question": "What fraction of keys move when one node is added to N nodes?",
+  "answer": "1 divided by (N plus one)",
+  "evidence": [
+   {
+    "doc_id": "consistent_hashing",
+    "text": "only about 1 divided by (N plus one) of the keys need to move"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q19",
+  "question": "What is the alternative to a hash ring that scores every node per key?",
+  "answer": "rendezvous hashing",
+  "evidence": [
+   {
+    "doc_id": "consistent_hashing",
+    "text": "An alternative called rendezvous hashing, or highest random weight hashing, scores every node for each key and picks the highest"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q20",
+  "question": "What is the main benefit of multi-version concurrency control?",
+  "answer": "readers never block writers",
+  "evidence": [
+   {
+    "doc_id": "mvcc",
+    "text": "readers never block writers and writers never block readers"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q21",
+  "question": "Which PostgreSQL process cleans up dead tuples?",
+  "answer": "VACUUM",
+  "evidence": [
+   {
+    "doc_id": "mvcc",
+    "text": "PostgreSQL removes them with a background process called VACUUM"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q22",
+  "question": "Which anomaly can still happen under snapshot isolation?",
+  "answer": "write skew",
+  "evidence": [
+   {
+    "doc_id": "mvcc",
+    "text": "it still permits an anomaly called write skew"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q23",
+  "question": "Where does InnoDB keep old row versions?",
+  "answer": "undo log",
+  "evidence": [
+   {
+    "doc_id": "mvcc",
+    "text": "MySQL's InnoDB keep old versions in a separate undo log"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q24",
+  "question": "Why are Lamport timestamps not enough to prove causality?",
+  "answer": "does not prove that one event caused another",
+  "evidence": [
+   {
+    "doc_id": "vector_clocks",
+    "text": "a smaller Lamport timestamp does not prove that one event caused another"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q25",
+  "question": "What does a node do with its vector when a message arrives?",
+  "answer": "element-wise maximum",
+  "evidence": [
+   {
+    "doc_id": "vector_clocks",
+    "text": "takes the element-wise maximum of its own vector and the received one"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q26",
+  "question": "How did Dynamo use vector clocks for conflicting writes?",
+  "answer": "conflicting siblings",
+  "evidence": [
+   {
+    "doc_id": "vector_clocks",
+    "text": "the system could recognize the conflicting siblings and return both to the application for reconciliation"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q27",
+  "question": "What properties must a state-based CRDT merge function have?",
+  "answer": "commutative, associative, and idempotent",
+  "evidence": [
+   {
+    "doc_id": "crdts",
+    "text": "the merge must be commutative, associative, and idempotent"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q28",
+  "question": "How do you merge two grow-only counters?",
+  "answer": "per-slot maximum",
+  "evidence": [
+   {
+    "doc_id": "crdts",
+    "text": "merging two states takes the per-slot maximum"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q29",
+  "question": "In an observed-remove set, what wins when an add and remove happen concurrently?",
+  "answer": "add wins",
+  "evidence": [
+   {
+    "doc_id": "crdts",
+    "text": "a concurrent add wins over a remove"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q30",
+  "question": "Is slow start actually slow?",
+  "answer": "grows exponentially",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "Despite its name, slow start therefore grows exponentially"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q31",
+  "question": "What does a TCP sender do after three duplicate ACKs?",
+  "answer": "fast retransmit",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "If the sender receives three duplicate acknowledgments, it performs fast retransmit"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q32",
+  "question": "How is BBR different from loss-based congestion control?",
+  "answer": "bottleneck bandwidth",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "it builds a model of the path's bottleneck bandwidth and round-trip propagation time"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q33",
+  "question": "What is the default congestion control algorithm on Linux?",
+  "answer": "CUBIC",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "CUBIC, the default algorithm in Linux"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q34",
+  "question": "Why can't reference counting free cyclic garbage?",
+  "answer": "cannot by itself collect cycles",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "it cannot by itself collect cycles of objects that refer to each other"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q35",
+  "question": "What is the weak generational hypothesis?",
+  "answer": "most objects die young",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "the weak generational hypothesis: most objects die young"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q36",
+  "question": "How does the runtime track old-to-young pointers?",
+  "answer": "remembered set",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "the runtime uses a write barrier to record pointers from old objects to young objects in a remembered set"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q37",
+  "question": "What pause times does ZGC aim for?",
+  "answer": "below one millisecond",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "ZGC targets pause times below one millisecond even on very large heaps"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q38",
+  "question": "What is the main weakness of two-phase commit?",
+  "answer": "blocking",
+  "evidence": [
+   {
+    "doc_id": "two_phase_commit",
+    "text": "The weakness of two-phase commit is blocking"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q39",
+  "question": "What pattern do microservices use instead of distributed transactions?",
+  "answer": "saga pattern",
+  "evidence": [
+   {
+    "doc_id": "two_phase_commit",
+    "text": "use the saga pattern"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q40",
+  "question": "What happens to participants if the coordinator crashes after they vote yes?",
+  "answer": "stuck in doubt",
+  "evidence": [
+   {
+    "doc_id": "two_phase_commit",
+    "text": "those participants are stuck in doubt"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q41",
+  "question": "Which rate limiter allows short bursts while keeping the average rate?",
+  "answer": "token bucket",
+  "evidence": [
+   {
+    "doc_id": "rate_limiting",
+    "text": "the token bucket permits short bursts up to the bucket capacity while still enforcing the long-term average rate"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q42",
+  "question": "What is the boundary problem with fixed window counters?",
+  "answer": "doubling the intended rate",
+  "evidence": [
+   {
+    "doc_id": "rate_limiting",
+    "text": "a client can send a full quota at the end of one window and another full quota at the start of the next, doubling the intended rate for a short time"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q43",
+  "question": "Which HTTP status code signals that a client is being throttled?",
+  "answer": "429",
+  "evidence": [
+   {
+    "doc_id": "rate_limiting",
+    "text": "respond with status code 429 Too Many Requests"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q44",
+  "question": "How is an LRU cache usually implemented?",
+  "answer": "hash map combined with a doubly linked list",
+  "evidence": [
+   {
+    "doc_id": "caching",
+    "text": "implemented with a hash map combined with a doubly linked list"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q45",
+  "question": "What is the risk of write-behind caching?",
+  "answer": "losing data",
+  "evidence": [
+   {
+    "doc_id": "caching",
+    "text": "risks losing data if the cache node fails before flushing"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q46",
+  "question": "How do you prevent a thundering herd when a hot key expires?",
+  "answer": "request coalescing",
+  "evidence": [
+   {
+    "doc_id": "caching",
+    "text": "Common defenses are request coalescing"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q47",
+  "question": "What limits the number of active consumers in a consumer group?",
+  "answer": "as many active consumers as there are partitions",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "A group can therefore have at most as many active consumers as there are partitions"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q48",
+  "question": "Are records ordered across partitions of a topic?",
+  "answer": "no ordering guarantee across partitions",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "there is no ordering guarantee across partitions"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q49",
+  "question": "What does setting acks to all guarantee for a producer?",
+  "answer": "every in-sync replica has the record",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "receives an acknowledgment only after every in-sync replica has the record"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "q50",
+  "question": "What retention mode keeps the latest value for each key?",
+  "answer": "Log compaction",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "Log compaction is an alternative retention mode that keeps at least the latest record for each key"
+   }
+  ],
+  "tags": [
+   "lexical"
+  ]
+ },
+ {
+  "id": "p01",
+  "question": "What stops a server that is missing committed entries from taking charge of the cluster?",
+  "answer": "denies its vote",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "a voter denies its vote if its own log is more up-to-date than the candidate's"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p02",
+  "question": "How many hash functions minimize the error rate of the probabilistic membership structure?",
+  "answer": "natural logarithm of 2",
+  "evidence": [
+   {
+    "doc_id": "bloom_filter",
+    "text": "the optimal number of hash functions is approximately (m / n) multiplied by the natural logarithm of 2"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p03",
+  "question": "How can a beefier server be given more of the keyspace?",
+  "answer": "more positions",
+  "evidence": [
+   {
+    "doc_id": "consistent_hashing",
+    "text": "let a more powerful machine take a proportionally larger share by receiving more positions"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p04",
+  "question": "What happens to tables when obsolete row versions are not cleaned up fast enough?",
+  "answer": "bloat",
+  "evidence": [
+   {
+    "doc_id": "mvcc",
+    "text": "if vacuuming falls behind, tables bloat and queries slow down"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p05",
+  "question": "Why do per-node logical timestamps get large over time?",
+  "answer": "number of nodes",
+  "evidence": [
+   {
+    "doc_id": "vector_clocks",
+    "text": "a vector clock grows with the number of nodes that have ever written the item"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p06",
+  "question": "How can a replicated counter support subtraction?",
+  "answer": "PN-Counter",
+  "evidence": [
+   {
+    "doc_id": "crdts",
+    "text": "A PN-Counter supports decrements by combining two G-Counters"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p07",
+  "question": "What is the name for growing linearly and cutting in half on loss?",
+  "answer": "AIMD",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "This additive increase, combined with multiplicative decrease on loss, is known as AIMD"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p08",
+  "question": "What happens to the sending rate when an RTO fires?",
+  "answer": "one segment",
+  "evidence": [
+   {
+    "doc_id": "tcp_congestion",
+    "text": "A retransmission timeout is treated as a more severe signal and resets the window to one segment"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p09",
+  "question": "Why is allocating new objects cheap after a copying collection?",
+  "answer": "pointer bump",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "which compacts memory and makes allocation a cheap pointer bump"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p10",
+  "question": "How does Python deal with objects that point at each other in a loop?",
+  "answer": "cycle detector",
+  "evidence": [
+   {
+    "doc_id": "garbage_collection",
+    "text": "CPython uses reference counting plus a separate cycle detector to handle this case"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p11",
+  "question": "How does Spanner keep its transaction manager from being a single point of failure?",
+  "answer": "Paxos",
+  "evidence": [
+   {
+    "doc_id": "two_phase_commit",
+    "text": "replicating its log with a consensus protocol, as Google Spanner does with Paxos"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p12",
+  "question": "Which throttling approach queues work and drains it at a constant pace?",
+  "answer": "leaky bucket",
+  "evidence": [
+   {
+    "doc_id": "rate_limiting",
+    "text": "The leaky bucket algorithm instead places requests in a queue that drains at a constant rate"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p13",
+  "question": "Where is shared throttling state usually kept when an API runs on many machines?",
+  "answer": "Redis",
+  "evidence": [
+   {
+    "doc_id": "rate_limiting",
+    "text": "In a distributed deployment the limiter's state must be shared, commonly in Redis"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p14",
+  "question": "Which caching mode never serves stale data but makes updates slower?",
+  "answer": "write-through",
+  "evidence": [
+   {
+    "doc_id": "caching",
+    "text": "With write-through caching, every write goes to the cache and the database synchronously, so the cache is never stale, but write latency increases"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p15",
+  "question": "How can a newly deployed service process events that were published last week?",
+  "answer": "replay history",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "new consumers can replay history"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p16",
+  "question": "How do producers make sure all events for one customer stay in sequence?",
+  "answer": "same partition",
+  "evidence": [
+   {
+    "doc_id": "kafka_log",
+    "text": "Producers usually choose a partition by hashing the record key, so that all records with the same key land in the same partition and stay in order"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p17",
+  "question": "Why does a lookup in this kind of index need so few disk reads?",
+  "answer": "high branching factor",
+  "evidence": [
+   {
+    "doc_id": "btree",
+    "text": "A high branching factor means that a lookup touches only a handful of disk pages"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p18",
+  "question": "Why do writes in a log-structured engine get rewritten to disk several times?",
+  "answer": "compaction rewrites the same data several times",
+  "evidence": [
+   {
+    "doc_id": "lsm_tree",
+    "text": "it rises because compaction rewrites the same data several times"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p19",
+  "question": "What does a follower do when it stops hearing from the leader?",
+  "answer": "transitions to the candidate state",
+  "evidence": [
+   {
+    "doc_id": "raft",
+    "text": "increments its current term, transitions to the candidate state, and requests votes from the other servers"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ },
+ {
+  "id": "p20",
+  "question": "What is the downside of lazy loading?",
+  "answer": "extra round trip",
+  "evidence": [
+   {
+    "doc_id": "caching",
+    "text": "every miss costs an extra round trip"
+   }
+  ],
+  "tags": [
+   "paraphrase"
+  ]
+ }
+]
